@@ -1,61 +1,59 @@
-import './App.css'
+import './App.css';
+import { NavLink, Route, Routes } from 'react-router-dom';
+import Activities from './components/Activities';
+import Leaderboard from './components/Leaderboard';
+import Teams from './components/Teams';
+import Users from './components/Users';
+import Workouts from './components/Workouts';
 
 function App() {
   return (
-    <main className="container py-5">
-      <div className="row align-items-center g-4">
-        <div className="col-lg-7">
-          <h1 className="display-5 fw-bold">OctoFit Tracker</h1>
-          <p className="lead text-muted">
-            Track workouts, manage teams, and stay motivated with a modern fitness dashboard.
-          </p>
-          <div className="d-flex gap-3">
-            <a className="btn btn-primary btn-lg" href="#features">Explore Features</a>
-            <a className="btn btn-outline-secondary btn-lg" href="#leaderboard">View Leaderboard</a>
-          </div>
-        </div>
-        <div className="col-lg-5">
-          <div className="card shadow-sm border-0">
-            <div className="card-body">
-              <h2 className="h4">Today&apos;s progress</h2>
-              <ul className="list-group list-group-flush mt-3">
-                <li className="list-group-item">🏃 8.4 km run completed</li>
-                <li className="list-group-item">💪 3 strength sessions logged</li>
-                <li className="list-group-item">🏆 Rank #2 in your team</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <main className="container py-4">
+      <div className="alert alert-info" role="status">
+        Configure VITE_CODESPACE_NAME in .env.local to enable Codespaces API URLs. Without it, the app uses localhost.
       </div>
 
-      <section id="features" className="row mt-5 g-4">
-        <div className="col-md-4">
-          <div className="card h-100 border-0 shadow-sm">
-            <div className="card-body">
-              <h3 className="h5">Activity logging</h3>
-              <p className="text-muted">Capture workouts and calories from one streamlined workspace.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card h-100 border-0 shadow-sm">
-            <div className="card-body">
-              <h3 className="h5">Team management</h3>
-              <p className="text-muted">Create groups, share goals, and compare progress.</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card h-100 border-0 shadow-sm">
-            <div className="card-body">
-              <h3 className="h5">Smart insights</h3>
-              <p className="text-muted">Use your leaderboard and workout suggestions to stay on track.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <nav className="nav nav-pills flex-wrap gap-2 mb-4">
+        <NavLink className="nav-link" to="/">Overview</NavLink>
+        <NavLink className="nav-link" to="/users">Users</NavLink>
+        <NavLink className="nav-link" to="/teams">Teams</NavLink>
+        <NavLink className="nav-link" to="/activities">Activities</NavLink>
+        <NavLink className="nav-link" to="/leaderboard">Leaderboard</NavLink>
+        <NavLink className="nav-link" to="/workouts">Workouts</NavLink>
+      </nav>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <section className="row g-4">
+              <div className="col-lg-7">
+                <div className="card shadow-sm border-0 h-100">
+                  <div className="card-body">
+                    <h1 className="display-6 fw-bold">OctoFit Tracker</h1>
+                    <p className="lead text-muted">
+                      Track workouts, manage teams, and stay motivated with a modern fitness dashboard.
+                    </p>
+                    <p className="text-muted">
+                      The dashboard loads data from the Node.js API and automatically switches between Codespaces and localhost URLs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-5">
+                <Users />
+              </div>
+            </section>
+          }
+        />
+        <Route path="/users" element={<Users />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/workouts" element={<Workouts />} />
+      </Routes>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
