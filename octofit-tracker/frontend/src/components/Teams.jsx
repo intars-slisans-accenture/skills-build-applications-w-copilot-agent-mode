@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { buildApiUrl } from '../utils/api';
 
+// Codespace endpoint pattern: -8000.app.github.dev/api/teams
+
 function Teams() {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { buildApiUrl } from '../utils/api';
 
+// Codespace endpoint pattern: -8000.app.github.dev/api/workouts
+
 function Workouts() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(true);

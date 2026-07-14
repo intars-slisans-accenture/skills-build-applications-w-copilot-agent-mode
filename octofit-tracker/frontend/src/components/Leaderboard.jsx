@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { buildApiUrl } from '../utils/api';
 
+// Codespace endpoint pattern: -8000.app.github.dev/api/leaderboard
+
 function Leaderboard() {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
